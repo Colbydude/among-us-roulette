@@ -1,11 +1,15 @@
 module.exports = {
     future: {
-        // removeDeprecatedGapUtilities: true,
-        // purgeLayersByDefault: true,
-        // defaultLineHeights: true,
-        // standardFontWeights: true
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true,
+        defaultLineHeights: true,
+        standardFontWeights: true
     },
-    purge: [],
+    purge: [
+        './public/**/*.html',
+        './src/**/*.html',
+        './src/**/*.vue'
+    ],
     theme: {
         extend: {}
     },
