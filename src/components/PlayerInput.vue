@@ -1,5 +1,5 @@
 <template>
-    <div class="block grid grid-cols-8 gap-x-4 mt-2">
+    <div class="grid grid-cols-8 gap-x-2 mt-2">
         <select v-model="player.colorHex" class="form-input col-span-2 block w-full">
             <option
                 v-for="color in colors"

@@ -109,6 +109,10 @@ export default {
             return b + c * (tc + -3 * ts + 3 * t);
         },
 
+        getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        },
+
         rotateWheel() {
             this.spinTime += 30;
 
@@ -124,13 +128,13 @@ export default {
 
             this.spinTimeout = setTimeout(() => {
                 this.rotateWheel();
-            }, 30);
+            }, this.getRandomInt(30));
         },
 
         spinWheel() {
-            this.spinAngleStart = Math.random() * 10 + 10;
+            this.spinAngleStart = this.getRandomInt(10) + 10;
             this.spinTime = 0;
-            this.spinTimeTotal = Math.random() * 3 + 4 * 1000;
+            this.spinTimeTotal = this.getRandomInt(3) + 4 * (1000 + this.getRandomInt(100));
             this.rotateWheel();
         },
 
