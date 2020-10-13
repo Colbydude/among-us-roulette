@@ -143,6 +143,7 @@ export default {
 
             this.wheelCtx.save();
             this.wheelCtx.font = 'bold 30px Helvetica, Arial';
+            this.wheelCtx.fillStyle = 'white';
 
             let text = this.players[index].playerName;
             console.log(index, text, this.players);
