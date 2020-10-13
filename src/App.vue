@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <wheel :players="players" />
+        <wheel :players="players.filter(player => player.eliminated === false)" />
         <div class="absolute top-0 right-0 p-4">
             <button
                 @click="addPlayer()"
@@ -35,7 +35,7 @@ export default {
     data: () => ({
         colors: Colors,
         players: [
-            { playerName: 'Clob', colorHex: Colors.find(color => color.colorName === 'Pink').colorHex },
+            { colorHex: Colors.find(color => color.colorName === 'Pink').colorHex, eliminated: false, playerName: 'Clob' },
         ]
     }),
 
@@ -47,6 +47,7 @@ export default {
 
             this.players.push({
                 colorHex: Colors[0].colorHex,
+                eliminated: false,
                 playerName: ''
             });
         },

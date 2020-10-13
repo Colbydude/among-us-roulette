@@ -1,5 +1,5 @@
 <template>
-    <div class="block grid grid-cols-6 gap-x-4 mt-2">
+    <div class="block grid grid-cols-8 gap-x-4 mt-2">
         <select v-model="player.colorHex" class="form-input col-span-2 block w-full">
             <option
                 v-for="color in colors"
@@ -9,7 +9,10 @@
                 {{ color.colorName }}
             </option>
         </select>
-        <input v-model="player.playerName" type="text" class="form-input col-span-3 block w-full" placeholder="Player Name">
+        <input v-model="player.playerName" type="text" class="form-input col-span-4 block w-full" placeholder="Player Name">
+        <label class="col-span-1 inline-flex items-center">
+            <input v-model="player.eliminated" type="checkbox" class="form-checkbox h-8 w-8 m-auto">
+        </label>
         <button
             @click="remove()"
             type="button"

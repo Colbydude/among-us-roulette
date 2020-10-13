@@ -1,4 +1,4 @@
-# among-us-wheel
+# among-us-roulette
 
 ## Project setup
 ```
