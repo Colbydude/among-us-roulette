@@ -21,7 +21,7 @@ export default {
         spinTimeTotal: 0,
         spinTimeout: null,
         startAngle: 0,
-        wheelCtx: ''
+        wheelCtx: null
     }),
 
     computed: {
@@ -47,7 +47,7 @@ export default {
     methods: {
         drawRouletteWheel() {
             // Thank you: https://codepen.io/barney-parker/pen/OPyYqy
-            const canvas = document.getElementById("canvas");
+            const canvas = document.getElementById('canvas');
 
             if (canvas.getContext) {
                 let outsideRadius = 200;
@@ -73,14 +73,15 @@ export default {
                     this.wheelCtx.save();
                     this.wheelCtx.shadowOffsetX = -1;
                     this.wheelCtx.shadowOffsetY = -1;
-                    this.wheelCtx.shadowBlur    = 0;
-                    this.wheelCtx.shadowColor   = "rgb(220,220,220)";
-                    this.wheelCtx.fillStyle = "black";
+                    this.wheelCtx.shadowBlur = 0;
+                    this.wheelCtx.shadowColor = 'rgb(220,220,220)';
+                    this.wheelCtx.fillStyle = 'black';
                     this.wheelCtx.translate(
                         250 + Math.cos(angle + this.arc / 2) * textRadius,
                         250 + Math.sin(angle + this.arc / 2) * textRadius
                     );
                     this.wheelCtx.rotate(angle + this.arc / 2 + Math.PI / 2);
+                    this.wheelCtx.font = '14px Helvetica, Arial';
 
                     let text = this.players[i].playerName;
                     this.wheelCtx.fillText(text, -this.wheelCtx.measureText(text).width / 2, 0);
@@ -88,7 +89,7 @@ export default {
                 }
 
                 // Arrow.
-                this.wheelCtx.fillStyle = "black";
+                this.wheelCtx.fillStyle = 'black';
                 this.wheelCtx.beginPath();
                 this.wheelCtx.moveTo(250 - 4, 250 - (outsideRadius + 5));
                 this.wheelCtx.lineTo(250 + 4, 250 - (outsideRadius + 5));
@@ -132,6 +133,10 @@ export default {
         },
 
         spinWheel() {
+            if (this.spinTimeout != null) {
+                return;
+            }
+
             this.spinAngleStart = this.getRandomInt(10) + 10;
             this.spinTime = 0;
             this.spinTimeTotal = this.getRandomInt(3) + 4 * (1000 + this.getRandomInt(100));
@@ -140,6 +145,7 @@ export default {
 
         stopRotateWheel() {
             clearTimeout(this.spinTimeout);
+            this.spinTimeout = null;
 
             let degrees = this.startAngle * 180 / Math.PI + 90;
             let arcd = this.arc * 180 / Math.PI;
@@ -150,8 +156,6 @@ export default {
             this.wheelCtx.fillStyle = 'white';
 
             let text = this.players[index].playerName;
-            console.log(index, text, this.players);
-
             this.wheelCtx.fillText(text, 250 - this.wheelCtx.measureText(text).width / 2, 250 + 10);
             this.wheelCtx.restore();
         }
