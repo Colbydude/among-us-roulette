@@ -37,6 +37,8 @@ import Colors from '../data/Colors';
 import PlayerInput from '../components/PlayerInput.vue';
 import Wheel from '../components/Wheel.vue';
 
+const PLAYER_LIMIT = 15;
+
 export default {
     name: 'Main',
 
@@ -54,7 +56,7 @@ export default {
 
     methods: {
         addPlayer() {
-            if (this.players.length >= 10) {
+            if (this.players.length >= PLAYER_LIMIT) {
                 return;
             }
 

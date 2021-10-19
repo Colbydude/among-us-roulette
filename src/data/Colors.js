@@ -11,4 +11,10 @@ export default [
     { colorName: 'Brown', colorHex: '#72491e' },
     { colorName: 'Cyan', colorHex: '#38fedc' },
     { colorName: 'Lime', colorHex: '#51ef39' },
+    { colorName: 'Maroon', colorHex: '#6c2b3d' },
+    { colorName: 'Rose', colorHex: '#ecc0d3' },
+    { colorName: 'Banana', colorHex: '#fffdbe' },
+    { colorName: 'Gray', colorHex: '#708497' },
+    { colorName: 'Tan', colorHex: '#928776' },
+    { colorName: 'Coral', colorHex: '#ec7578' },
 ];
